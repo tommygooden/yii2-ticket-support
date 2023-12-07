@@ -41,6 +41,7 @@ class Ticket extends TicketBase
     const TYPE_SITE = 0;
     const TYPE_EMAIL = 10;
     const TYPE_TELEGRAM = 20;
+    const TYPE_WEBSITE_FORM = 30;
 
     const PRIORITY_LOW = 0;
     const PRIORITY_MIDDLE = 10;
@@ -144,6 +145,7 @@ class Ticket extends TicketBase
             self::TYPE_SITE => \akiraz2\support\Module::t('support', 'Site'),
             self::TYPE_EMAIL => \akiraz2\support\Module::t('support', 'Email'),
             self::TYPE_TELEGRAM => \akiraz2\support\Module::t('support', 'Telegram'),
+            self::TYPE_WEBSITE_FORM => \akiraz2\support\Module::t('support', 'Website Contact Form'),
         ];
     }
 
