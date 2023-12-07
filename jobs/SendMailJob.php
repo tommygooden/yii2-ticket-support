@@ -28,12 +28,16 @@ class SendMailJob extends BaseObject implements \yii\queue\JobInterface
             $subject = \akiraz2\support\Module::t('support', '[{APP} Ticket #{ID}] Re: {TITLE}',
                 ['APP' => \Yii::$app->name, 'ID' => $content->ticket->hash_id, 'TITLE' => $content->ticket->title]);
 
-            $this->mailer->sendMessage(
-                $email,
-                $subject,
+            $this->mailer->compose(
                 'reply-ticket',
-                ['title' => $subject, 'model' => $content]
-            );
+                [
+                    'title' => $subject,
+                    'model' => $content
+                ]
+            ) // a view rendering result becomes the message body here
+                ->setTo($email)
+                ->setSubject($subject)
+                ->send();
 
         }
     }
