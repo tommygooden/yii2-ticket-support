@@ -1,29 +1,32 @@
 {
   "name": "tommygooden/yii2-ticket-support",
-  "description": "Yii2 Support Ticket Module, easy, flexible, fast",
+  "description": "A fork of Yii2 Support Ticket Module, easy, flexible, fast by Akiraz2",
   "type": "yii2-extension",
   "keywords": [
     "yii2",
     "support",
     "ticket",
-    "module"
+    "module",
+    "tommy",
+    "gooden",
+    "jamaica"
   ],
   "license": "MIT",
   "authors": [
     {
-      "name": "akiraz2",
-      "email": "akiraz@bk.ru"
+      "name": "Tommy Gooden",
+      "email": "tommygooden@hotmail.com"
     }
   ],
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "yiisoft/yii2": "~2.0",
-    "hashids/hashids": "^2.0",
+    "yiisoft/yii2": "^2.0",
+    "hashids/hashids": "^5.0.2",
     "yiidoc/yii2-redactor": "*",
-    "php-imap/php-imap": "^3.0",
-    "yiisoft/yii2-queue": "~2.0",
-    "rmrevin/yii2-fontawesome": "~2.17"
+    "php-imap/php-imap": "^5.0",
+    "yiisoft/yii2-queue": "^2.0",
+    "rmrevin/yii2-fontawesome": "^3.7"
   },
   "autoload": {
     "psr-4": {
