@@ -163,7 +163,8 @@ class Content extends ContentBase
         if ($insert) {
             if ($this->getModule()->notifyByEmail) {
                 Yii::$app->get($this->getModule()->queueComponent)->push(new SendMailJob([
-                    'contentId' => $this->id
+                    'contentId' => $this->id,
+                    'mailerFrom' => $this->getModule()->mailerFrom
                 ]));
             }
         }
