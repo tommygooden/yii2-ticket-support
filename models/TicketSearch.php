@@ -89,13 +89,16 @@ class TicketSearch extends Ticket
         $query->andFilterWhere(['like', 'title', $this->title]);
 
         if (!empty($this->user_id)) {
+            // Get the user id param from params
+            $userIdField = $this->getModule()->userPK ?? 'id';
+
             if ($this->getModule()->isMongoDb()) {
-                $key = '_id';
+                $key = "_{$userIdField}";
             } else {
-                $key = 'id';
+                $key = $userIdField;
             }
             $ids = [];
-            $userNameField = $this->getModule()->userName;
+            $userNameField = $this->getModule()->userPK;
             $owners = $this->getModule()->userModel::find()->select([$key])->where([
                 'like',
                 $userNameField,
