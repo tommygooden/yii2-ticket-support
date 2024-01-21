@@ -56,6 +56,11 @@ class Module extends \yii\base\Module
     /** @var string config.php: `'id' => 'app-backend',` */
     public $appBackendId = 'app-backend';
 
+    /** @var array an array with the user to be used to send email. [email => 'senders name'] */
+    public $mailerFrom = [
+        'no-reply@example.com' => 'Support System',
+    ];
+
     /** @var bool|function for accessRule matchCallback
      * for example,
      *      'adminMatchCallback' => function () {

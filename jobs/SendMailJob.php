@@ -29,12 +29,13 @@ class SendMailJob extends BaseObject implements \yii\queue\JobInterface
                 ['APP' => \Yii::$app->name, 'ID' => $content->ticket->hash_id, 'TITLE' => $content->ticket->title]);
 
             $this->mailer->compose(
-                'reply-ticket',
+                ['html' => 'reply-ticket-html', 'text' => 'reply-ticket-text'],
                 [
                     'title' => $subject,
                     'model' => $content
                 ]
             ) // a view rendering result becomes the message body here
+                ->setFrom($this->mailerFrom)
                 ->setTo($email)
                 ->setSubject($subject)
                 ->send();
