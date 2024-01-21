@@ -18,6 +18,7 @@ class SendMailJob extends BaseObject implements \yii\queue\JobInterface
     use ModuleTrait;
 
     public $contentId;
+    public $mailerFrom;
 
     public function execute($queue)
     {
