@@ -8,10 +8,10 @@
 
 namespace akiraz2\support\models;
 
-use akiraz2\support\Mailer;
 use akiraz2\support\traits\ModuleTrait;
-use Hashids\Hashids;
+use akiraz2\support\Mailer;
 use PhpImap\IncomingMail;
+use Hashids\Hashids;
 use Yii;
 
 /**

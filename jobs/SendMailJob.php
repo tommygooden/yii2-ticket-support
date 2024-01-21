@@ -8,10 +8,10 @@
 
 namespace akiraz2\support\jobs;
 
+use yii\base\BaseObject;
 use akiraz2\support\Mailer;
 use akiraz2\support\models\Content;
 use akiraz2\support\traits\ModuleTrait;
-use yii\base\BaseObject;
 
 class SendMailJob extends BaseObject implements \yii\queue\JobInterface
 {
