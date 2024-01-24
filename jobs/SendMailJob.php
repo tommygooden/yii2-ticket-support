@@ -13,7 +13,7 @@ use akiraz2\support\Mailer;
 use akiraz2\support\models\Content;
 use akiraz2\support\traits\ModuleTrait;
 
-class SendMailJob extends BaseObject implements \yii\queue\JobInterface
+class SendMailJob extends BaseObject implements \yii\queue\RetryableJobInterface
 {
     use ModuleTrait;
 
@@ -26,10 +26,13 @@ class SendMailJob extends BaseObject implements \yii\queue\JobInterface
         if ($content !== null) {
             $email = $content->ticket->user_contact;
             /* send email */
-            $subject = \akiraz2\support\Module::t('support', '[{APP} Ticket #{ID}] Re: {TITLE}',
-                ['APP' => \Yii::$app->name, 'ID' => $content->ticket->hash_id, 'TITLE' => $content->ticket->title]);
+            $subject = \akiraz2\support\Module::t(
+                'support',
+                '[{APP} Ticket #{ID}] Re: {TITLE}',
+                ['APP' => \Yii::$app->name, 'ID' => $content->ticket->hash_id, 'TITLE' => $content->ticket->title]
+            );
 
-            $this->mailer->compose(
+            $this->getMailer()->compose(
                 ['html' => 'reply-ticket-html', 'text' => 'reply-ticket-text'],
                 [
                     'title' => $subject,
@@ -40,8 +43,17 @@ class SendMailJob extends BaseObject implements \yii\queue\JobInterface
                 ->setTo($email)
                 ->setSubject($subject)
                 ->send();
-
         }
+    }
+
+    public function getTtr()
+    {
+        return 60;
+    }
+
+    public function canRetry($attempt, $error)
+    {
+        return ($attempt < 50);
     }
 
     protected function getMailer()

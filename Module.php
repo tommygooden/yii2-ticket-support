@@ -57,9 +57,10 @@ class Module extends \yii\base\Module
     public $appBackendId = 'app-backend';
 
     /** @var array an array with the user to be used to send email. [email => 'senders name'] */
-    public $mailerFrom = [
-        'no-reply@example.com' => 'Support System',
-    ];
+    public $mailerFrom = [];
+
+    /** @var string logo url for instances where a logo will be used */
+    public $logoUrl = '';
 
     /** @var bool|function for accessRule matchCallback
      * for example,
@@ -88,7 +89,7 @@ class Module extends \yii\base\Module
     public $showUsernameSupport = true;
 
     public $userNameSupport = 'Support';
-    
+
 
     /** @var boolean If true it makes extension compatible to yii2 basic template */
     public $yii2basictemplate = false;
@@ -101,7 +102,7 @@ class Module extends \yii\base\Module
      *      }
      *
      */
-    public $hashGenerator = null;    
+    public $hashGenerator = null;
 
 
     /**
